@@ -1252,6 +1252,11 @@ body.dark .ab-bubble-bot strong{color:var(--acc2)}
 @keyframes abDot{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-5px);opacity:1}}
 </style>
 </head>
+<!-- PWA Manifest -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-152.png">
+<meta name="msapplication-TileImage" content="icons/icon-144.png">
+<meta name="msapplication-TileColor" content="#0b9aa0">
 <body>
 <div id="phone-frame">
 <!-- SPLASH -->
@@ -5460,5 +5465,18 @@ document.addEventListener('DOMContentLoaded', function(){
   <span class="ab-tooltip">AcuaBot IA</span>
   <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
 </button>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/AcuaGo-app/sw.js', { scope: '/AcuaGo-app/' })
+      .then(function(reg) {
+        console.log('[AcuaGo SW] registrado:', reg.scope);
+      })
+      .catch(function(err) {
+        console.warn('[AcuaGo SW] error:', err);
+      });
+  });
+}
+</script>
 </body>
 </html>
